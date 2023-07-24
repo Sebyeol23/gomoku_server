@@ -7,7 +7,7 @@ const port = 8000;
 
 const server = app.listen(port, () => {
   console.log(
-    `##### server is running on http://localhost:8000. ${new Date().toLocaleString()} #####`
+    `##### server is running on https://port-0-gomoku-server-cu6q2blkgm7b0f.sel4.cloudtype.app. ${new Date().toLocaleString()} #####`
   );
 });
 
