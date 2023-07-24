@@ -38,15 +38,15 @@ webSocketServer.on('connection', (ws, request)=>{
     // 3) 클라이언트로부터 메시지 수신 이벤트 처리
     ws.on('message', (msg)=>{
         console.log(`${msg} 메시지를 수신하였습니다`);
-        const data = JSON.parse(msg);
+        const data = msg;
         console.log(`data => ${data}`);
-        console.log(`data type => ${data.type}`);
-        switch (data.type) {
+        console.log(`data type => ${data[type]}`);
+        switch (data[type]) {
         case 'create_room':
             createRoom(ws);
             break;
         case 'join_room':
-            joinRoom(ws, data.roomId);
+            joinRoom(ws, data[roomId]);
             break;
         case 'game_move':
             handleGameMove(ws, data);
