@@ -38,7 +38,7 @@ webSocketServer.on('connection', (ws, request)=>{
     // 3) 클라이언트로부터 메시지 수신 이벤트 처리
     ws.on('message', (msg)=>{
         console.log(`${msg} 메시지를 수신하였습니다`);
-        const data = JSON.parse(message);
+        const data = msg;
         switch (data.type) {
         case 'create_room':
             createRoom(ws);
