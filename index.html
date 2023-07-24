@@ -26,7 +26,7 @@ window.onload = function() {
     // 3. 버튼 클릭 이벤트 처리 
     // 3-1) 웹소켓 서버에게 메세지 보내기 
     document.getElementById("btn_send").onclick = function(){ if(webSocket.readyState === webSocket.OPEN){  // 연결 상태 확인
-        webSocket.send(JSON.stringify(documetn.getElementById("text_send").value)); // 웹소켓 서버에게 메시지 전송 
+        webSocket.send(JSON.stringify(document.getElementById("text_send").value)); // 웹소켓 서버에게 메시지 전송 
     } else { 
         alert("연결된 웹소켓 서버가 없습니다."); 
         } 
