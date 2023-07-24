@@ -32,7 +32,7 @@ webSocketServer.on('connection', (ws, request)=>{
     
     // 2) 클라이언트에게 메시지 전송
     if(ws.readyState === ws.OPEN){ // 연결 여부 체크
-        ws.send(`클라이언트[${ip}] 접속을 환영합니다 from 서버`); // 데이터 전송
+        ws.send(JSON.stringify(`{type: msg, msg: 클라이언트[${ip}] 접속을 환영합니다 from 서버}`)); // 데이터 전송
     }
     
     // 3) 클라이언트로부터 메시지 수신 이벤트 처리
