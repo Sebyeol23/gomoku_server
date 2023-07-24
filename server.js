@@ -39,6 +39,8 @@ webSocketServer.on('connection', (ws, request)=>{
     ws.on('message', (msg)=>{
         console.log(`${msg} 메시지를 수신하였습니다`);
         const data = JSON.parse(msg);
+        console.log(`data => ${data}`);
+        console.log(`data type => ${data.type}`);
         switch (data.type) {
         case 'create_room':
             createRoom(ws);
