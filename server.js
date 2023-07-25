@@ -143,7 +143,7 @@ function createRoom(ws) {
     const room = gameRooms[roomId];
     if (room && room.player1 && room.player2) {
       room.player1.send(JSON.stringify({ type: 'stone_set', roomId: roomId, roundX: roundX, roundY: roundY }));
-      // room.player2.send(JSON.stringify({ type: 'stone_set', roomId: roomId, roundX: roundX, roundY: roundY }));
+      room.player2.send(JSON.stringify({ type: 'stone_set', roomId: roomId, roundX: roundX, roundY: roundY }));
       console.log({ type: 'stone_set', roomId: roomId, roundX: roundX, roundY: roundY });
     }
   }
