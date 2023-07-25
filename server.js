@@ -118,7 +118,7 @@ function createRoom(ws) {
     const room = gameRooms[roomId];
     if (room && room.player1 && room.player2) {
       room.gameStarted = true;
-      room.player1.send(JSON.stringify({ type: 'game_start', currentPlayer: room.currentPlayer }));
-      room.player2.send(JSON.stringify({ type: 'game_start', currentPlayer: room.currentPlayer }));
+      room.player1.send(JSON.stringify({ type: 'game_start', color: "Black", currentPlayer: room.currentPlayer }));
+      room.player2.send(JSON.stringify({ type: 'game_start', color: "Black", currentPlayer: room.currentPlayer }));
     }
   }
