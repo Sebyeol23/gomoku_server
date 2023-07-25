@@ -130,6 +130,7 @@ function createRoom(ws) {
     const room = gameRooms[roomId];
     if (room && room.player1 && room.player2) {
         room.currentPlayer == room.currentPlayer == "Black" ? "White" : "Black";
+        console.log(room.currentPlayer);
       room.player1.send(JSON.stringify({ type: 'turn_switch', currentPlayer: room.currentPlayer }));
       room.player2.send(JSON.stringify({ type: 'turn_switch', currentPlayer: room.currentPlayer }));
     }
