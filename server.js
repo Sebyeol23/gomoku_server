@@ -52,6 +52,9 @@ webSocketServer.on('connection', (ws, request)=>{
             handleGameMove(ws, data);
             break;
         // 다른 타입의 메시지 처리...
+        case 'switch_turn':
+            switchTurn(data.roomId);
+            break;
         }
     })
     
@@ -120,5 +123,14 @@ function createRoom(ws) {
       room.gameStarted = true;
       room.player1.send(JSON.stringify({ type: 'game_start', color: "Black", currentPlayer: room.currentPlayer }));
       room.player2.send(JSON.stringify({ type: 'game_start', color: "White", currentPlayer: room.currentPlayer }));
+    }
+  }
+
+  function switchTurn(roomId) {
+    const room = gameRooms[roomId];
+    room.currentPlayer = room.currentPlayer == "Black" ? "White" : "Black";
+    if (room && room.player1 && room.player2) {
+      room.player1.send(JSON.stringify({ type: 'turn_switch', currentPlayer: room.currentPlayer }));
+      room.player2.send(JSON.stringify({ type: 'turn_switch', currentPlayer: room.currentPlayer }));
     }
   }
