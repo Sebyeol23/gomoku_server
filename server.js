@@ -126,7 +126,6 @@ function createRoom(ws) {
       room.gameStarted = true;
       room.player1.send(JSON.stringify({ type: 'game_start', roomId: roomId, color: "Black", currentPlayer: room.currentPlayer }));
       room.player2.send(JSON.stringify({ type: 'game_start', roomId: roomId, color: "White", currentPlayer: room.currentPlayer }));
-      console.log({ type: 'game_start', roomId: roomId, color: "White", currentPlayer: room.currentPlayer });
     }
   }
 
@@ -145,5 +144,6 @@ function createRoom(ws) {
     if (room && room.player1 && room.player2) {
       room.player1.send(JSON.stringify({ type: 'stone_set', roomId: roomId, roundX: roundX, roundY: roundY }));
       room.player2.send(JSON.stringify({ type: 'stone_set', roomId: roomId, roundX: roundX, roundY: roundY }));
+      console.log({ type: 'stone_set', roomId: roomId, roundX: roundX, roundY: roundY });
     }
   }
