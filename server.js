@@ -128,9 +128,7 @@ function createRoom(ws) {
 
   function switchTurn(roomId) {
     const room = gameRooms[roomId];
-    if(room){
-        console.log(`${room.player1} room`);
-    }
+    
     if (room && room.player1 && room.player2) {
       room.player1.send(JSON.stringify({ type: 'turn_switch', currentPlayer: room.currentPlayer }));
       room.player2.send(JSON.stringify({ type: 'turn_switch', currentPlayer: room.currentPlayer }));
