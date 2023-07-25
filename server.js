@@ -122,7 +122,7 @@ function createRoom(ws) {
     if (room && room.player1 && room.player2) {
       room.gameStarted = true;
       room.player1.send(JSON.stringify({ type: 'game_start', roomId: roomId, color: "Black", currentPlayer: room.currentPlayer }));
-      room.player2.send(JSON.stringify({ type: 'game_start', roomdId: roomId, color: "White", currentPlayer: room.currentPlayer }));
+      room.player2.send(JSON.stringify({ type: 'game_start', roomId: roomId, color: "White", currentPlayer: room.currentPlayer }));
     }
   }
 
