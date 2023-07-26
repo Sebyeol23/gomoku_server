@@ -58,6 +58,9 @@ webSocketServer.on('connection', (ws, request)=>{
         case 'set_stone':
             setStone(data.roomId, data.color, data.roundX, data.roundY);
             break;
+        case 'shoot_stone':
+          shootStone(data.roomId, data.X, data.Y);
+          break;
         }
     })
     
@@ -145,5 +148,14 @@ function createRoom(ws) {
       room.player1.send(JSON.stringify({ type: 'stone_set', roomId: roomId, color: color, roundX: roundX, roundY: roundY }));
       room.player2.send(JSON.stringify({ type: 'stone_set', roomId: roomId, color: color, roundX: roundX, roundY: roundY }));
       console.log({ type: 'stone_set', roomId: roomId, color: color, roundX: roundX, roundY: roundY });
+    }
+  }
+
+  function shootStone(roomId, X, Y) {
+    const room = gameRooms[roomId];
+    if (room && room.player1 && room.player2) {
+      room.player1.send(JSON.stringify({ type: 'stone_shoot', roomId: roomId, X: X, Y: Y }));
+      room.player2.send(JSON.stringify({ type: 'stone_shoot', roomId: roomId, X: X, Y: Y }));
+      console.log({ type: 'stone_shoot', roomId: roomId, X: X, Y: Y });
     }
   }
